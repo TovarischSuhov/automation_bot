@@ -3,6 +3,6 @@
 
 from app import app
 
-@app.route('/')
+@app.route('/', methods=["POST"])
 def index():
     return("OK")
