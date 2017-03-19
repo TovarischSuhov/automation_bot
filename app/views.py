@@ -11,5 +11,5 @@ def ping(chat_id):
 
 @app.route('/', methods=['POST'])
 def index():
-    print request
+    print(request.form)
     return 'OK',200
