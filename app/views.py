@@ -3,6 +3,7 @@
 
 from app import app
 from app import apipath
+from flask import request
 import requests
 
 def ping(chat_id):
