@@ -5,4 +5,4 @@ from app import app
 
 @app.route('/')
 def index():
-    return 0
+    return("OK")
