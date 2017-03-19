@@ -1,0 +1,18 @@
+sudo: required
+
+language: python
+
+services: 
+  - docker
+
+before_install:
+  - docker build -t ilsuhov/automation_bot:latest .
+  - docker run -d -p 127.0.0.1:5000:80 ilsuhov/automation_bot
+
+script:
+  - docker ps -a
+
+after_success:
+    - docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD";
+    - docker push ilsuhov/automation_bot:latest;
+
