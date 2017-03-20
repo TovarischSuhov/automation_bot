@@ -5,6 +5,7 @@ from app import app
 from app import apipath
 from flask import request
 import requests
+import json
 
 
 def send_message(chat_id, text):
@@ -16,5 +17,9 @@ def ping(chat_id):
 
 @app.route('/', methods=['POST'])
 def index():
-    app.logger.error(request.json)
+    message=json.dumps(request.json)
+    if message["message"]["text"] == "/ping":
+        ping(message["message"]["chat"]["id"])
+    else:
+        send_message(message["message"]["chat"]["id"], u"Что")
     return 'OK',200
