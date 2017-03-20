@@ -6,11 +6,15 @@ from app import apipath
 from flask import request
 import requests
 
-def ping(chat_id):
-    requests.get(apipath + "sendMessage", params={"chat_id":chat_id, "text": "pong"})
 
+def send_message(chat_id, text):
+    requests.get(apipath + "sendMessage", params={"chat_id":chat_id, "text": text})
+
+
+def ping(chat_id):
+    send_message(chat_id, "pong")
 
 @app.route('/', methods=['POST'])
 def index():
-    app.logger.debug(request.form)
+    app.logger.info(request.body)
     return 'OK',200
