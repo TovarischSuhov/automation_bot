@@ -17,7 +17,7 @@ def ping(chat_id):
 
 @app.route('/', methods=['POST'])
 def index():
-    message=json.dumps(request.json)
+    message=request.json
     if(message["message"]["text"] == "/ping"):
         ping(message["message"]["chat"]["id"])
     else:
