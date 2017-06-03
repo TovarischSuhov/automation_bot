@@ -22,3 +22,8 @@ def index():
     else:
         send_message(message["message"]["chat"]["id"], u"Unknown command\n" + help_message)
     return 'OK',200
+
+@app.route('/test')
+def test():
+    message=request
+    return message
