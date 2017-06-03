@@ -25,5 +25,5 @@ def index():
 
 @app.route('/test')
 def test():
-    message=request
-    return message
+    message=request.headers
+    return str(message)
